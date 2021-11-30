@@ -26,14 +26,10 @@ public class MasterMind {
 
 
 //      2. Getting guess from player
-        Scanner myObj = new Scanner(System.in);
-        System.out.println("Enter your guess: ");
-
-        String playerInput = myObj.nextLine();
-        System.out.println("Your guess is " + playerInput);
+       Scanner myObj = new Scanner(System.in);
 
 //      converting randomNumber and playerInput to an array
-        String[] input = playerInput.split("");
+        String[] input;
         String[] randomNumber = content.split("");
 
         // 3.loop of the game
@@ -42,6 +38,19 @@ public class MasterMind {
 
         while(turn < chances) {
 
+            System.out.println("Enter your guess: ");
+            String playerInput = myObj.nextLine();
+
+            while(playerInput.length() != 4) {
+                myObj = new Scanner(System.in);
+                System.out.println("Your input is not 4 digits, please enter any 4 digits between 0 and 7!");
+                playerInput = myObj.nextLine();
+            }
+            System.out.println("Your guess is  " + playerInput);
+            input = playerInput.split("");
+
+
+
             // 4.if the player wins the game
             if (content.equals(playerInput)) {
                 System.out.println("Congrats you won! You guessed the right number!");
@@ -49,18 +58,18 @@ public class MasterMind {
             }
             
 
-            int flag = 0;
-            Integer guess_codes[][] = new Integer[4][10];
-            String guess_flags[][] = new String[4][10];
-            
-
-            if (flag == 1) {
-                System.out.println("Wrong choice! Try again!");
-            }
+//            int flag = 0;
+//            Integer guess_codes[][] = new Integer[4][10];
+//            String guess_flags[][] = new String[4][10];
+//
+//
+//            if (flag == 1) {
+//                System.out.println("Wrong choice! Try again!");
+//            }
 
             //5. the logic of the game
             int guessedNumbers = 0, guessedNumberswithLocation = 0, unguessed = 4;
-            int pos = 0;
+
 
             for (int i =0; i < randomNumber.length; i++) {
                 String currentNumber = randomNumber[i];
@@ -74,7 +83,7 @@ public class MasterMind {
                     guessedNumbers += 1;
                     input[indexOf(currentNumber,input)] = "U";
                     }
-                    pos += 1;
+
                 }
             unguessed -= (guessedNumbers + guessedNumberswithLocation);
             turn += 1;
@@ -88,15 +97,12 @@ public class MasterMind {
 
             //7.When you lose the game
             if (turn == chances) {
-                System.out.println("The number was " + randomNumber);
+                System.out.println("The number was " + Arrays.toString(randomNumber));
                 System.out.println("Sorry! You lost the game! Please try it again!");
                break;
            }
 //           8. Asking for next guess if player still has a chance
-            System.out.println("Enter your guess: ");
-            playerInput = myObj.nextLine();
-            System.out.println("Your guess is  " + playerInput);
-            input = playerInput.split("");
+
 
 
 
