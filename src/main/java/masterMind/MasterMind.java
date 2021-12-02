@@ -1,6 +1,7 @@
 package masterMind;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
@@ -35,6 +36,7 @@ public class MasterMind {
         // 2.loop of the game
         int chances = 10;
         int turn = 0;
+        List<String> guesses = new ArrayList<>();
 
         while(turn < chances) {
 
@@ -73,8 +75,10 @@ public class MasterMind {
                 }
 
             unguessed -= (guessedNumbers + guessedNumberswithLocation);
+            guesses.add(playerInput);
             turn += 1;
             int remain = chances - turn;
+
 
             //6.When you lose the game
             if (turn == chances) {
@@ -88,6 +92,7 @@ public class MasterMind {
             System.out.println("You have  " + guessedNumberswithLocation + " guessed number with correct location!");
             System.out.println("You have " + unguessed + "  unguessed number!");
             System.out.println("You have " + remain + " chances left!");
+            System.out.println("Your recent guesses " + guesses);
         }
     }
 
