@@ -2,44 +2,46 @@
 
 Mastermind is a code-breaking game normally played between two players. For my project, the user will play "against" the computer which will randomly select 4 number combinations.
 This is a game where a player tries to guess the number combinations.\
-At the end of each attempt to guess the number combinations, the computer will provide feedback whether the
+At the end of each attempt, the computer will provide feedback whether the
 player had guessed a number correctly, or/and digit correctly. A player must guess
 the right number combinations within 10 attempts to win the game.
 
 Rules of the Game:
 
 At the start of the game the computer will randomly select a pattern of four different
-numbers from a total of 8 different numbers. It may contain duplicate digits between 0 and 7.\
+numbers from a total of 8 different numbers between 0 and 7.
+
 •A player will have 10 attempts to guess the number combinations\
 • At the end of each guess, computer will provide the following response
-as feedback:\
-• The player had guessed a correct number\
-• The player had guessed a correct number and its correct location\
-• The player’s guess was incorrect
+as feedback:
+1. The player had guessed a correct number
+2. The player had guessed a correct number and its correct location
+3. The player’s guess was incorrect
 
 **Note that the computer’s feedback will not reveal which number the player guessed
-correctly
+correctly\
+**The number combination may contain duplicate numbers
 
 You can check more about this game here
-https://en.wikipedia.org/wiki/Mastermind_(board_game)
+[Mastermind (Board game)](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
 
 ## Prerequisites
 
 * JDK 11
-* Maven(bundled)
+* Apache Maven 3.8.4
 * IntelliJIDEA(you can use Eclipse) or you can use Command Line
 
-##Overview
+## Overview
 
 I created this game as Maven project in  Java language and my User Interface is Command Line or Terminal of IntellijIDEA.\
 First I created Mastermind class with main method which calls my play method. In play method I implemented the logic of the game.
 I used Random Number Generator API (https://www.random.org/clients/http/api/) for generating 4 number combinations.
 I am handling this call in separate method,then I called that method at the very beginning of the code to get randomNumber. 
-I also used Scanner object from Java library to get input/guesses from player. In my play method I compare input with randomnuNumber and printed the correct feedback.
-It keeps taking input from player with until player guesses correct combination or lose if it is already 10 attempts.
+I also created Scanner object from Java library to get input/guesses from player. In my play method I compare input with randomnuNumber and print feedback.
+It keeps taking input from player until player guesses correct combination and wins or loses if no more attempts left.
 
-##Play
-
+## Play/Run
+ I added `maven exec plugin`, so user can be able to run locally using Command Line.
 
  ```<build>
         <plugins>
@@ -58,7 +60,22 @@ It keeps taking input from player with until player guesses correct combination 
         </plugins>
     </build>
 ```
-Run\
-`mvn clean install`\
+After cloning the repo you can open it in IntellijIDEA and press the "Run" button, and you can see that game starts on the Terminal.
+You can start playing putting your guesses OR in your Command Line
+
+`mvn clean install`
+
 `mvn exec:java`
 
+This will run the Maven project, and you can be able to play the game using Command Line.
+
+## Helpful links
+
+• [OpenJDK](https://openjdk.java.net/)
+
+• [Apache Maven](https://maven.apache.org/download.cgi)
+
+• [Maven Exec Plugin](https://www.mojohaus.org/exec-maven-plugin/)
+
+
+• [How to play Mastermind Game](https://www.youtube.com/watch?v=5jtcsBERDEQ)

@@ -18,10 +18,10 @@ public class MasterMind {
     public static void main(String[] args) {
         System.out.println("Welcome to Mastermind Game!!!");
         System.out.println("Please enter any 4 numbers between 0 and 7");
-        game();
+        play();
     }
 
-    public static void game() {
+    public static void play() {
 
         //  1. Getting random number from an generateNumber method
         String randomNumber = generateNumber("4", "0", "7");
