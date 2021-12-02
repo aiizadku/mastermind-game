@@ -23,10 +23,10 @@ public class MasterMind {
 
     public static void play() {
 
-        //  1. Getting random number from an generateNumber method
+        //  1. Getting random number from  generateNumber method
         String randomNumber = generateNumber("4", "0", "7");
 
-        //    getting instance of Scanner
+        //    creating Scanner object
        Scanner myObj = new Scanner(System.in);
 
 //      converting randomNumber and playerInput to an array
@@ -36,7 +36,7 @@ public class MasterMind {
         // 2.loop of the game
         int chances = 10;
         int turn = 0;
-        List<String> guesses = new ArrayList<>();
+        List<String> previousGuesses = new ArrayList<>();
 
         while(turn < chances) {
 
@@ -44,7 +44,7 @@ public class MasterMind {
             System.out.println("Enter your guess: ");
             String playerInput = myObj.nextLine();
 
-
+//           check for correct input
             while(playerInput.length() != 4 || !check(playerInput)) {
                 System.out.println("Your input is not 4 digits, please enter any 4 digits between 0 and 7!");
                 System.out.println("Enter your guess: ");
@@ -75,12 +75,12 @@ public class MasterMind {
                 }
 
             unguessed -= (guessedNumbers + guessedNumberswithLocation);
-            guesses.add(playerInput);
+            previousGuesses.add(playerInput);
             turn += 1;
             int remain = chances - turn;
 
 
-            //6.When you lose the game
+            //6.When player loses the game
             if (turn == chances) {
                 System.out.println("The number was " + Arrays.toString(randomNumberArr));
                 System.out.println("Sorry! You lost the game! Please try it again!");
@@ -92,7 +92,7 @@ public class MasterMind {
             System.out.println("You have  " + guessedNumberswithLocation + " guessed number with correct location!");
             System.out.println("You have " + unguessed + "  unguessed number!");
             System.out.println("You have " + remain + " chances left!");
-            System.out.println("Your recent guesses " + guesses);
+            System.out.println("Your recent guesses " + previousGuesses);
         }
     }
 
@@ -126,6 +126,7 @@ public class MasterMind {
 
             // Read the contents of an entity and return it as a String.
             content = EntityUtils.toString(entity);
+           //  getting rid of spaces
             content = content.replaceAll("\\s+", "");
             //System.out.println("Your random number is " + content);
 
@@ -134,11 +135,9 @@ public class MasterMind {
         }
 
         return content;
-
-
     }
 
-//    checking for unvalid inputs
+//    checking for invalid inputs
     public static boolean check(String arr) {
         for (int i = 0; i < arr.length(); i++) {
             boolean flag = Character.isDigit(arr.charAt(i));
@@ -154,5 +153,4 @@ public class MasterMind {
         }
         return true;
     }
-
 }
