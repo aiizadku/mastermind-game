@@ -16,7 +16,10 @@ import org.apache.http.util.EntityUtils;
 public class MasterMind {
 
     public static void main(String[] args) {
-        System.out.println("Welcome to Mastermind Game!!!");
+        System.out.println("-------------------------------------------");
+        System.out.println("      Welcome to Mastermind Game!!!");
+        System.out.println("-------------------------------------------");
+
         System.out.println("Please enter any 4 numbers between 0 and 7");
         play();
     }
@@ -50,7 +53,7 @@ public class MasterMind {
                 System.out.println("Enter your guess: ");
                 playerInput = myObj.nextLine();
             }
-            System.out.println("Your numbers are " + playerInput);
+            System.out.println("Your numbers are " + "-" + playerInput + "-");
             input = playerInput.split("");
 
             // 4.if the player wins the game
@@ -88,11 +91,15 @@ public class MasterMind {
             }
 
             // 7. Printing the feedback to the player
-            System.out.println("You have  " + guessedNumbers + " guessed number!");
-            System.out.println("You have  " + guessedNumberswithLocation + " guessed number with correct location!");
-            System.out.println("You have " + unguessed + "  unguessed number!");
-            System.out.println("You have " + remain + " chances left!");
-            System.out.println("Your recent guesses " + previousGuesses);
+            System.out.println("-------------------------------------------");
+            System.out.println("     Guessed numbers with correct position: " + guessedNumberswithLocation);
+            System.out.println("     Guessed numbers:  " + guessedNumbers);
+            System.out.println("     Not guessed numbers: " + unguessed);
+            System.out.println("-------------------------------------------");
+            System.out.println("     Remain chances: " + remain);
+            System.out.println("     Your recent guesses " + previousGuesses);
+            System.out.println("-------------------------------------------");
+
         }
     }
 
