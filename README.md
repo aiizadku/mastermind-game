@@ -11,7 +11,7 @@ Rules of the Game:
 At the start of the game the computer will randomly select a pattern of four different
 numbers from a total of 8 different numbers between 0 and 7.
 
-•A player will have 10 attempts to guess the number combinations\
+• A player will have 10 attempts to guess the number combinations.\
 • At the end of each guess, computer will provide the following response
 as feedback:
 1. The player had guessed a correct number
@@ -20,7 +20,7 @@ as feedback:
 
 **Note that the computer’s feedback will not reveal which number the player guessed
 correctly\
-**The number combination may contain duplicate numbers
+**Note that the number combination may contain duplicate numbers
 
 You can check more about this game here
 [Mastermind (Board game)](https://en.wikipedia.org/wiki/Mastermind_(board_game)).
@@ -33,12 +33,12 @@ You can check more about this game here
 
 ## Overview
 
-I created this game as Maven project in  Java language and my User Interface is Command Line or Terminal of IntellijIDEA.\
-First I created Mastermind class with main method which calls my play method. In play method I implemented the logic of the game.
+I created this game as Maven project in Java programming language and my User Interface is Command Line or Terminal of IntellijIDEA.\
+First I created Mastermind class with `main` method which calls my `play` method. In `play` method I implemented the logic of the game.
 I used Random Number Generator API (https://www.random.org/clients/http/api/) for generating 4 number combinations.
-I am handling this call in separate method,then I called that method at the very beginning of the code to get randomNumber. 
-I also created Scanner object from Java library to get input/guesses from player. In my play method I compare input with randomnuNumber and print feedback.
-It keeps taking input from player until player guesses correct combination and wins or loses if no more attempts left.
+I am handling this call in separate method, then I called that method at the very beginning of the code to get randomNumber. 
+I also created `Scanner` object from Java library to get input/guesses from player. In my `play` method I compare input with randomNumber and print out feedback.
+It keeps taking input from player until player guesses correct combinations and wins or loses if no more attempts left.
 
 ## Play/Run
  I added `maven exec plugin`, so user can be able to run locally using Command Line.
@@ -61,13 +61,17 @@ It keeps taking input from player until player guesses correct combination and w
     </build>
 ```
 After cloning the repo you can open it in IntellijIDEA and press the "Run" button, and you can see that game starts on the Terminal.
-You can start playing putting your guesses OR in your Command Line
+You can start playing putting your guesses
+
+OR
+
+In your Command Line:
 
 `mvn clean install`
 
 `mvn exec:java`
 
-This will run the Maven project, and you can be able to play the game using Command Line.
+This will run the Maven project, and you will be able to play the game using Command Line.
 
 ## Helpful links
 
