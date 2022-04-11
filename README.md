@@ -34,7 +34,7 @@ You can check more about this game here
 ## Overview
 
 I created this game as Maven project in Java programming language and my User Interface is Command Line or Terminal of IntellijIDEA.\
-First I created Mastermind class with `main` method which calls my `play` method. In `play` method I implemented the logic of the game.
+First I created Mastermind class with `main` method which calls my `play` method of GameManager class. In `play` method I implemented the logic of the game.
 I used Random Number Generator API (https://www.random.org/clients/http/api/) for generating 4 number combinations.
 I am handling this call in separate method, then I called that method at the very beginning of the code to get randomNumber. 
 I also created `Scanner` object from Java library to get input/guesses from player. In my `play` method I compare input with randomNumber and print out feedback.
