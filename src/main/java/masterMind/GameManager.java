@@ -18,16 +18,16 @@ public class GameManager {
         System.out.println("      Welcome to Mastermind Game!!!");
         System.out.println("-------------------------------------------");
 
-
         int cont = 0;
+        int playerNummber = 2;
+        System.out.println("In this round, " + playerNummber + " players are playing!");
 
-        while(cont < 2) {
+        while(cont < playerNummber) {
             play();
             cont++;
         }
         System.out.println(board);
         pickWinner();
-
     }
 
     private void pickWinner() {
@@ -40,9 +40,8 @@ public class GameManager {
                 pl = entry.getKey();
             }
         }
-        System.out.println("The winner is " + pl + " with the remain attempts of " + min);
+        System.out.println("The winner is " + pl + " with  " + min + " tries!");
     }
-
 
     public void play() {
 
@@ -58,7 +57,7 @@ public class GameManager {
 
         System.out.println("Please enter any 4 numbers between 0 and 7");
 
-//      converting randomNumber and playerInput to an array
+        // converting randomNumber and playerInput to an array
         String[] input;
         String[] randomNumberArr = randomNumber.split("");
 
@@ -73,7 +72,7 @@ public class GameManager {
             System.out.println("Enter your guess: ");
             String playerInput = myObj.nextLine();
 
-//           check for correct input
+            // check for correct input
             while(playerInput.length() != 4 || !check(playerInput)) {
                 System.out.println("Your input is not 4 digits, please enter any 4 digits between 0 and 7!");
                 System.out.println("Enter your guess: ");
@@ -85,17 +84,14 @@ public class GameManager {
             // 4.if the player wins the game
             if (randomNumber.equals(playerInput)) {
                 System.out.println("Congrats you won! You guessed the right number!");
-
                 break;
             }
 
             String[] newrandom = randomNumberArr.clone();
-
             //5. the logic of the game
             int guessedNumbers = 0, guessedNumberswithLocation = 0, unguessed = 4;
 
             for (int i =0; i < randomNumberArr.length; i++) {
-
                 String currentNumber = randomNumberArr[i];
                 if (currentNumber.equals(input[i])) {
                     guessedNumberswithLocation += 1;
@@ -104,25 +100,19 @@ public class GameManager {
                 }
             }
             for (int i =0; i < newrandom.length; i++) {
-
                 String currentNumber = newrandom[i];
                 if(contains(currentNumber, input)) {
                     guessedNumbers += 1;
                     input[indexOf(currentNumber,input)] = "U";
-
                 }
 //                System.out.println("random" + Arrays.toString(randomNumberArr));
 //                System.out.println("new" + Arrays.toString(newrandom));
 //                System.out.println("input" +Arrays.toString(input));
-
-
             }
             unguessed -= (guessedNumbers + guessedNumberswithLocation);
             previousGuesses.add(playerInput);
-
             turn += 1;
             int remain = chances - turn;
-
 
             //6.When player loses the game
             if (turn == chances) {
@@ -141,14 +131,13 @@ public class GameManager {
             System.out.println("     Your recent guesses " + previousGuesses);
             System.out.println("-------------------------------------------");
 //            System.out.println(randomNumber);
-
         }
+
         board.put(playerName, turn);
     }
 
     // Implementing contains method
     public static boolean contains(String input, String... arr) {
-
         for(int i=0; i < arr.length; i++)
             if(arr[i].equals(input)) return true;
 
@@ -157,7 +146,6 @@ public class GameManager {
 
     //  Implementing indexOf method
     public static int indexOf(String input, String[] arr) {
-
         for(int i=0; i < arr.length; i++)
             if(arr[i].equals(input)) return i;
 
@@ -179,11 +167,9 @@ public class GameManager {
             //  getting rid of spaces
             content = content.replaceAll("\\s+", "");
             System.out.println("Your random number is " + content);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return content;
     }
 
@@ -199,7 +185,6 @@ public class GameManager {
                 }
             }else
                 return  false;
-
         }
         return true;
     }

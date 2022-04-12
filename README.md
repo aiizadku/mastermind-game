@@ -1,10 +1,11 @@
 # Mastermind-game
 
-Mastermind is a code-breaking game normally played between two players. For my project, the user will play "against" the computer which will randomly select 4 number combinations.
+Mastermind is a code-breaking game normally played between two players. For my project, this game can be played by 2 or more players.\
+Computer will randomly select 4 number combinations.
 This is a game where a player tries to guess the number combinations.\
 At the end of each attempt, the computer will provide feedback whether the
 player had guessed a number correctly, or/and digit correctly. A player must guess
-the right number combinations within 10 attempts to win the game.
+the right number combinations within 10 attempts. Whoever guesses the number with the least number of attempts wins..
 
 Rules of the Game:
 
@@ -34,7 +35,7 @@ You can check more about this game here
 ## Overview
 
 I created this game as Maven project in Java programming language and my User Interface is Command Line or Terminal of IntellijIDEA.\
-First I created Mastermind class with `main` method which calls my `play` method of GameManager class. In `play` method I implemented the logic of the game.
+First I created Mastermind class with `main` method which calls my `startGame` method of GameManager class. In `play` method I implemented the logic of the game.
 I used Random Number Generator API (https://www.random.org/clients/http/api/) for generating 4 number combinations.
 I am handling this call in separate method, then I called that method at the very beginning of the code to get randomNumber. 
 I also created `Scanner` object from Java library to get input/guesses from player. In my `play` method I compare input with randomNumber and print out feedback.
