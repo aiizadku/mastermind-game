@@ -87,7 +87,6 @@ public class GameManager {
                 break;
             }
 
-            String[] newrandom = randomNumberArr.clone();
             //5. the logic of the game
             int guessedNumbers = 0, guessedNumberswithLocation = 0, unguessed = 4;
 
@@ -96,17 +95,15 @@ public class GameManager {
                 if (currentNumber.equals(input[i])) {
                     guessedNumberswithLocation += 1;
                     input[i] = "U";
-                    newrandom[i] = "r";
                 }
-            }
-            for (int i =0; i < newrandom.length; i++) {
-                String currentNumber = newrandom[i];
-                if(contains(currentNumber, input)) {
+                else if((contains(currentNumber, input)) && (randomNumberArr[indexOf(currentNumber, input)].equals(currentNumber))) {
+                    guessedNumberswithLocation += 1;
+                    input[indexOf(currentNumber,input)] = "U";
+                }else if ((contains(currentNumber, input)) && (!randomNumberArr[indexOf(currentNumber, input)].equals(currentNumber))) {
                     guessedNumbers += 1;
                     input[indexOf(currentNumber,input)] = "U";
                 }
 //                System.out.println("random" + Arrays.toString(randomNumberArr));
-//                System.out.println("new" + Arrays.toString(newrandom));
 //                System.out.println("input" +Arrays.toString(input));
             }
             unguessed -= (guessedNumbers + guessedNumberswithLocation);
